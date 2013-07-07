@@ -1,5 +1,11 @@
 # angularjs-rails-cdn
 
+[![Gem Version](https://badge.fury.io/rb/angularjs-rails-cdn.png)](https://badge.fury.io/rb/angularjs-rails-cdn)
+[![Build Status](https://secure.travis-ci.org/styx/angularjs-rails-cdn.png?branch=master)](https://travis-ci.org/styx/angularjs-rails-cdn)
+[![Dependency Status](https://gemnasium.com/styx/angularjs-rails-cdn.png)](https://gemnasium.com/styx/angularjs-rails-cdn)
+[![Code Climate](https://codeclimate.com/github/styx/angularjs-rails-cdn.png)](https://github.com/styx/angularjs-rails-cdn)
+[![Coverage Status](https://coveralls.io/repos/styx/angularjs-rails-cdn/badge.png?branch=master)](https://coveralls.io/r/styx/angularjs-rails-cdn)
+
 Adds CDN support to
 
 * [angularjs-rails](https://github.com/hiravgandhi/angularjs-rails).
