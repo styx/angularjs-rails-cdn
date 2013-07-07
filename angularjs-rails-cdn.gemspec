@@ -15,8 +15,10 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
   gem.version       = AngularJS::Rails::Cdn::VERSION
 
-  gem.signing_key = File.join(Dir.home, '/.gem/trust/gem-private_key.pem')
-  gem.cert_chain = ['gem-public_cert.pem']
+  unless ENV['TRAVIS']
+    gem.signing_key = File.join(Dir.home, '/.gem/trust/gem-private_key.pem')
+    gem.cert_chain = ['gem-public_cert.pem']
+  end
 
   gem.add_dependency 'angularjs-rails'
   gem.add_dependency 'railties', '>= 3.0'
