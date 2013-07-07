@@ -59,9 +59,11 @@ Then in layout:
 Other possible usages:
 
 ```ruby
-= angularjs_include_tag :google, version: '1.1.5' # To override version
+# To override version
+= angularjs_include_tag :google, version: '1.1.5'
+# To load additional AngularJS modules
 = angularjs_include_tag :google, modules: [:resources,
-:cookies] # To load additional AngularJS related modules
+:cookies]
 ```
 
 Note that only valid CDN symbols is:
