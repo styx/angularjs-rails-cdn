@@ -22,11 +22,11 @@ module AngularJS::Rails::Cdn
       return local_includes if OFFLINE and !options[:force]
 
       cdn_includes = modules(options[:modules]).map do |m|
-        javascript_include_tag(angularjs_url(name, m, version))
+        javascript_include_tag(angularjs_url(name, m, version),options)
       end.join
 
       [ cdn_includes,
-        javascript_tag("window.angular || document.write(unescape('#{local_includes.gsub('<','%3C')}'))")
+        javascript_tag("window.angular || document.write(unescape('#{local_includes.gsub('<','%3C')}'))", options)
       ].join.html_safe
     end
 
