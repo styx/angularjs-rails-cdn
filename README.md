@@ -38,6 +38,7 @@ Implications of externalizing AngularJS from `application.js` are:
 
 Changelog:
 
+* v0.1.1: Pass options to javascript_include_tag
 * v0.1.0: Initial release
 
 ## Installation
