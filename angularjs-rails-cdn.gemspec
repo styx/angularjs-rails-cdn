@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = "angularjs-rails-cdn"
   gem.require_paths = ['lib']
   gem.version       = AngularJS::Rails::Cdn::VERSION
+  gem.license       = 'MIT'
 
   unless ENV['TRAVIS']
     gem.signing_key = File.join(Dir.home, '/.gem/trust/gem-private_key.pem')
