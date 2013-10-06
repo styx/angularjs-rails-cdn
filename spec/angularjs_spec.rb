@@ -2,7 +2,7 @@
 
 require_relative 'spec_helper'
 
-def javascript_tag(str)
+def javascript_tag(str, *args)
   "<s>#{str}</s>".tap do |s|
     s.class.send(:define_method, :html_safe, ->{ self })
   end
@@ -49,18 +49,19 @@ describe 'AngularJS::Rails::Cdn::ActionViewExtensions' do
     end
 
     context 'CDN is enforced' do
-      before do
-        subject.should_receive(:javascript_include_tag).with('//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js').and_return('<s>//angular.min.js</s>')
-      end
-
       context 'no additional modules' do
+        before do
+          subject.should_receive(:javascript_include_tag).with('//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js', force: true, version: '1.1.5').and_return('<s>//angular.min.js</s>')
+        end
+
         it { subject.angularjs_include_tag(:google, force: true, version: '1.1.5').should == "<s>//angular.min.js</s><s>window.angular || document.write(unescape('%3Cs>angular.js%3C/s>'))</s>" }
       end
 
-      context 'with submodule' do
+      context 'with additional module' do
         before do
+          subject.should_receive(:javascript_include_tag).with('//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js', force: true, version: '1.1.5', modules: [:cookies]).and_return('<s>//angular.min.js</s>')
           subject.should_receive(:javascript_include_tag).with(:'angular-cookies').and_return('<s>angular-cookies.js</s>')
-          subject.should_receive(:javascript_include_tag).with('//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular-cookies.min.js').and_return('<s>//angular-cookies.min.js</s>')
+          subject.should_receive(:javascript_include_tag).with('//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular-cookies.min.js', force: true, version: '1.1.5', modules: [:cookies]).and_return('<s>//angular-cookies.min.js</s>')
         end
 
         it { subject.angularjs_include_tag(:google, force: true, version: '1.1.5', modules: [:cookies]).should == "<s>//angular.min.js</s><s>//angular-cookies.min.js</s><s>window.angular || document.write(unescape('%3Cs>angular.js%3C/s>%3Cs>angular-cookies.js%3C/s>'))</s>" }
