@@ -17,7 +17,7 @@ module AngularJS::Rails::Cdn
     def angularjs_include_tag(name, options = {})
       version = options[:version] || ANGULARJS_VERSION
 
-      local_includes = modules(options[:modules]).map { |m| javascript_include_tag(m) }.join
+      local_includes = modules(options[:modules]).map { |m| javascript_include_tag(m) }.join.html_safe
 
       return local_includes if OFFLINE and !options[:force]
 
