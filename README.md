@@ -38,6 +38,7 @@ Implications of externalizing AngularJS from `application.js` are:
 
 Changelog:
 
+* v0.1.3: Be a bit more html_safe
 * v0.1.2: Specified license in spec file
 * v0.1.1: Pass options to javascript_include_tag
 * v0.1.0: Initial release
