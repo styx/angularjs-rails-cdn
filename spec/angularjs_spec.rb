@@ -3,9 +3,7 @@
 require_relative 'spec_helper'
 
 def javascript_tag(str, *args)
-  "<s>#{str}</s>".tap do |s|
-    s.class.send(:define_method, :html_safe, ->{ self })
-  end
+  "<s>#{str}</s>"
 end
 
 describe 'AngularJS::Rails::Cdn::ActionViewExtensions' do
