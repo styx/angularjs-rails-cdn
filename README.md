@@ -61,7 +61,7 @@ If you're using assets pipeline with Rails 3.1+, first remove `//= require angul
 Then in layout:
 
 ```ruby
-= angularjs_include_tag :google,
+= angularjs_include_tag :google
 = javascript_include_tag 'application'
 ```
 
@@ -75,7 +75,7 @@ Other possible usages:
 :cookies]
 ```
 
-Note that only valid CDN symbols is:
+Note: currently only valid CDN symbols is:
 
 ```ruby
 :google
