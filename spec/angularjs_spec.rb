@@ -35,14 +35,20 @@ describe 'AngularJS::Rails::Cdn::ActionViewExtensions' do
     context 'offline mode' do
       context 'no additional modules' do
         it { subject.angularjs_include_tag(:google).should == '<s>angular.js</s>' }
+        it { subject.angularjs_include_tag(:google).should be_html_safe }
+
         it { subject.angularjs_include_tag(:google, version: '1.0.7').should == '<s>angular.js</s>' }
+        it { subject.angularjs_include_tag(:google, version: '1.0.7').should be_html_safe }
       end
 
       context 'with additional module' do
         before { subject.should_receive(:javascript_include_tag).with(:'angular-cookies').and_return('<s>angular-cookies.js</s>') }
 
         it { subject.angularjs_include_tag(:google, modules: [:cookies]).should == '<s>angular.js</s><s>angular-cookies.js</s>' }
+        it { subject.angularjs_include_tag(:google, modules: [:cookies]).should be_html_safe }
+
         it { subject.angularjs_include_tag(:google, version: '1.0.7', modules: [:cookies]).should == '<s>angular.js</s><s>angular-cookies.js</s>' }
+        it { subject.angularjs_include_tag(:google, version: '1.0.7', modules: [:cookies]).should be_html_safe }
       end
     end
 
@@ -53,6 +59,7 @@ describe 'AngularJS::Rails::Cdn::ActionViewExtensions' do
         end
 
         it { subject.angularjs_include_tag(:google, force: true, version: '1.1.5').should == "<s>//angular.min.js</s><s>window.angular || document.write(unescape('%3Cs>angular.js%3C/s>'))</s>" }
+        it { subject.angularjs_include_tag(:google, force: true, version: '1.1.5').should be_html_safe }
       end
 
       context 'with additional module' do
@@ -63,6 +70,7 @@ describe 'AngularJS::Rails::Cdn::ActionViewExtensions' do
         end
 
         it { subject.angularjs_include_tag(:google, force: true, version: '1.1.5', modules: [:cookies]).should == "<s>//angular.min.js</s><s>//angular-cookies.min.js</s><s>window.angular || document.write(unescape('%3Cs>angular.js%3C/s>%3Cs>angular-cookies.js%3C/s>'))</s>" }
+        it { subject.angularjs_include_tag(:google, force: true, version: '1.1.5', modules: [:cookies]).should be_html_safe }
       end
     end
   end
