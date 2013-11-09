@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ['Mikhail Pobolovets']
   gem.email         = ['styx.mp@gmail.com']
   gem.description   = %q{Adds CDN support to angularjs-rails}
-  gem.summary       = %q{Adds CDN support to angularjs-rails}
+  gem.summary       = %q{Adds CDN support to angularjs-rails with fallback if CDN is not available}
   gem.homepage      = 'https://github.com/styx/angularjs-rails-cdn'
 
   gem.files         = `git ls-files`.split($\)
