@@ -1,10 +1,14 @@
 require 'active_support/core_ext/string/output_safety'
-require 'angularjs-rails'
 require 'angularjs-rails-cdn/version'
 
 module AngularJS::Rails::Cdn
   module ActionViewExtensions
-    ANGULARJS_VERSION = AngularJS::Rails::VERSION
+    if defined?(AngularJS::Rails::VERSION)
+        ANGULARJS_VERSION = AngularJS::Rails::VERSION
+    elsif defined?(RailsAssetsAngular::VERSION)
+      ANGULARJS_VERSION = RailsAssetsAngular::VERSION
+    end
+    
     OFFLINE = (Rails.env.development? or Rails.env.test?)
 
     URL = {

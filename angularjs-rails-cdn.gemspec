@@ -21,7 +21,6 @@ Gem::Specification.new do |gem|
     gem.cert_chain = ['gem-public_cert.pem']
   end
 
-  gem.add_dependency 'angularjs-rails'
   gem.add_dependency 'railties', '>= 3.0'
 
   gem.add_development_dependency 'bundler', '~> 1.3'
